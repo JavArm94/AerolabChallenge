@@ -3,9 +3,11 @@ import Navbar from "./containers/navbar/Navbar";
 import { createGlobalStyle } from "styled-components";
 import { Vars } from "./styles/Variables";
 import ProductSection from "./containers/productSection";
-import { LoadingScreen } from "./containers/LoadingScreen";
+import { PageLoader } from "./containers/PageLoader";
 import { Spinner } from "./components/addPoints/Styles";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { LoadingScreen } from "./containers/LoadingScreen";
 
 const GlobalStyle = createGlobalStyle`
 body{
@@ -18,23 +20,31 @@ body{
 `;
 
 function App() {
+  const userState = useSelector((state) => state.user);
+  const productsState = useSelector((state) => state.products);
   const [isLoading, setIsLoading] = useState(true);
-  const handleLoading = () => {
-    setIsLoading(false);
-  };
 
   useEffect(() => {
-    window.addEventListener("load", handleLoading);
-    return () => window.removeEventListener("load", handleLoading);
-  }, []);
+    if (productsState.sortedProducts.length && userState.dataUser.points) {
+      setIsLoading(false);
+    }
+  }, [productsState, userState]);
 
   return (
     <>
       <GlobalStyle></GlobalStyle>
-      <LoadingScreen isLoading={isLoading}>
+      <PageLoader isLoading={isLoading}>
         <Navbar></Navbar>
         <ProductSection></ProductSection>
-      </LoadingScreen>
+      </PageLoader>
+      {isLoading && (
+        <LoadingScreen isLoading={isLoading}>
+          <Spinner>
+            <div></div>
+            <h1>Page loading...</h1>
+          </Spinner>
+        </LoadingScreen>
+      )}
     </>
   );
 }
