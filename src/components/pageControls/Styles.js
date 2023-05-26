@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   padding: 20px 0;
+  font-weight: 600;
 
   span {
     margin-right: ${(p) => !p.filterOn && "auto"};

@@ -13,4 +13,5 @@ export const FilterBtn = styled(DefaultBtn)`
   padding: 0 20px;
   color: ${(p) => (p.active ? "white" : Vars.bgColorUser)};
   background-color: ${(p) => p.active && Vars.btnBgActive};
+  font-weight: 600;
 `;

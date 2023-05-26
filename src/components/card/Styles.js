@@ -93,4 +93,11 @@ export const RedeemBtn = styled(DefaultBtn)`
   grid-column-end: 3;
   margin-bottom: auto;
   padding: 0 40px;
+  font-weight: bold;
+  border: solid 2px white;
+  background-color: white;
+
+  :hover {
+    color: ${Vars.btnBgActive};
+  }
 `;
