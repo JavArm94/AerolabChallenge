@@ -3,13 +3,14 @@ import { FilterBtn, Wrapper } from "./Styles";
 import { textBtn } from "../../styles/Variables";
 import { useDispatch } from "react-redux";
 import { filterProducts } from "../../reducers/productReducer";
+
 const Filter = () => {
   const [filter, setFilter] = useState("Most recent");
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(filterProducts(filter));
-  }, [filter]);
+  }, [dispatch, filter]);
 
   return (
     <Wrapper>

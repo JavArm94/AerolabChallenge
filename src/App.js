@@ -3,6 +3,9 @@ import Navbar from "./containers/navbar/Navbar";
 import { createGlobalStyle } from "styled-components";
 import { Vars } from "./styles/Variables";
 import ProductSection from "./containers/productSection";
+import { LoadingScreen } from "./containers/LoadingScreen";
+import { Spinner } from "./components/addPoints/Styles";
+import { useState, useEffect } from "react";
 
 const GlobalStyle = createGlobalStyle`
 body{
@@ -15,11 +18,23 @@ body{
 `;
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const handleLoading = () => {
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("load", handleLoading);
+    return () => window.removeEventListener("load", handleLoading);
+  }, []);
+
   return (
     <>
       <GlobalStyle></GlobalStyle>
-      <Navbar></Navbar>
-      <ProductSection></ProductSection>
+      <LoadingScreen isLoading={isLoading}>
+        <Navbar></Navbar>
+        <ProductSection></ProductSection>
+      </LoadingScreen>
     </>
   );
 }

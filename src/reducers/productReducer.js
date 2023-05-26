@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { paginateProducts } from "../utils/pagination";
 
 const initialState = {
-  loadingProducts: false,
+  loadingProducts: true,
   errorProducts: false,
   dataProducts: [],
   sortedProducts: [],

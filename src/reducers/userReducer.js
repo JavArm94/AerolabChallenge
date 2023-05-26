@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  loadingUser: false,
+  loadingUser: true,
   errorUser: false,
   dataUser: {},
 };
@@ -15,9 +15,9 @@ const userSlice = createSlice({
       state.errorUser = false;
     },
     fetchUserSuccess: (state, action) => {
+      state.dataUser = action.payload;
       state.loadingUser = false;
       state.errorUser = false;
-      state.dataUser = action.payload;
     },
     fetchUserError: (state) => {
       state.loadingUser = false;
