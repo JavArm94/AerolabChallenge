@@ -10,9 +10,10 @@ const pointsReducer = createSlice({
   name: "points",
   initialState,
   reducers: {
-    transactionBegin: (state) => {
+    transactionBegin: (state, action) => {
       state.loadingTransaction = true;
       state.errorTransaction = false;
+      state.statusTransaction = action.payload;
     },
     transactionSuccess: (state, action) => {
       state.loadingTransaction = false;

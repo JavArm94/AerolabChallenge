@@ -3,11 +3,10 @@ import Navbar from "./containers/navbar/Navbar";
 import { createGlobalStyle } from "styled-components";
 import { Vars } from "./styles/Variables";
 import ProductSection from "./containers/productSection";
-import { PageLoader } from "./containers/PageLoader";
-import { Spinner } from "./components/addPoints/Styles";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { LoadingScreen } from "./containers/LoadingScreen";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import History from "./components/history";
 
 const GlobalStyle = createGlobalStyle`
 body{
@@ -25,29 +24,38 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (productsState.sortedProducts.length && userState.dataUser.points) {
+    if (userState.dataUser.points) {
       setIsLoading(false);
     }
+    console.log(isLoading);
   }, [productsState, userState]);
 
   return (
-    <>
+    <Router>
       <GlobalStyle></GlobalStyle>
-      <PageLoader isLoading={isLoading}>
-        <Navbar></Navbar>
-        <ProductSection></ProductSection>
-      </PageLoader>
-      {isLoading && (
-        <LoadingScreen isLoading={isLoading}>
-          <Spinner>
-            <div></div>
-            <h1>Page loading...</h1>
-          </Spinner>
-        </LoadingScreen>
-      )}
-    </>
+      <Navbar isLoading={isLoading}></Navbar>
+      <Routes>
+        <Route
+          path="/"
+          element={<ProductSection isLoading={isLoading}></ProductSection>}
+        ></Route>
+        <Route
+          path="/history"
+          element={<History isLoading={isLoading}></History>}
+        ></Route>
+      </Routes>
+    </Router>
   );
 }
+
+/**   <Route
+          path="/"
+          element={
+            <>
+              <ContentContainer></ContentContainer>
+            </>
+          }
+        ></Route> */
 
 export default App;
 

@@ -1,7 +1,7 @@
 import React from "react";
-import { BtnPoint } from "./Styles";
-import coin from "../../assets/icons/coin.svg";
+import { BtnPoint, SpinnerBtn } from "./Styles";
 import axios from "axios";
+import coin from "../../assets/icons/coin.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   transactionBegin,
@@ -14,7 +14,7 @@ const AddPoints = ({ amount }) => {
   const pointsState = useSelector((state) => state.points);
 
   const addPointsToUser = async (amount) => {
-    dispatch(transactionBegin());
+    dispatch(transactionBegin(amount));
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_ENDPOINT}user/points`,
@@ -39,8 +39,17 @@ const AddPoints = ({ amount }) => {
         pointsState.loadingTransaction ? null : () => addPointsToUser(amount)
       }
     >
-      {amount}
-      <img src={coin} alt="" />
+      {pointsState.loadingTransaction &&
+      pointsState.statusTransaction === amount ? (
+        <SpinnerBtn>
+          <div></div>
+        </SpinnerBtn>
+      ) : (
+        <>
+          {amount}
+          <img src={coin} alt="" />
+        </>
+      )}
     </BtnPoint>
   );
 };

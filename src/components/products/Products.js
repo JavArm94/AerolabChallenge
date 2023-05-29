@@ -16,25 +16,30 @@ const Products = () => {
 
   useEffect(() => {
     const fetchProductsData = async () => {
-      dispatch(fetchProductsBegin());
-      try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_ENDPOINT}products`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-              Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-            },
-          }
-        );
-        dispatch(fetchProductsSuccess(response.data));
-      } catch {
-        dispatch(fetchProductsError());
+      if (
+        productsState.loadingProducts ||
+        !productsState.sortedProducts.length > 0
+      ) {
+        dispatch(fetchProductsBegin());
+        try {
+          const response = await axios.get(
+            `${process.env.REACT_APP_ENDPOINT}products`,
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+              },
+            }
+          );
+          dispatch(fetchProductsSuccess(response.data));
+        } catch {
+          dispatch(fetchProductsError());
+        }
       }
     };
     fetchProductsData();
-  }, []);
+  }, [dispatch, productsState]);
 
   if (
     productsState.loadingProducts ||

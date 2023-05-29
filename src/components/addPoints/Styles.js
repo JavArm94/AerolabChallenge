@@ -5,6 +5,7 @@ from{transform:rotate(0deg)}
 to{transform:rotate(360deg)}`;
 
 export const BtnPoint = styled(DefaultBtn)`
+  width: 100px;
   font-weight: bolder;
 
   img {
@@ -37,5 +38,12 @@ export const Spinner = styled.div`
   h1 {
     font-size: 1rem;
     text-align: center;
+  }
+`;
+
+export const SpinnerBtn = styled(Spinner)`
+  div {
+    height: 15px;
+    width: 15px;
   }
 `;

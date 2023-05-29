@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PageLoader = styled.div`
+export const LoadedAnimation = styled.div`
   display: ${(p) => (p.isLoading ? "none" : "initial")};
   opacity: 0;
   transform: translateY(-50px);
