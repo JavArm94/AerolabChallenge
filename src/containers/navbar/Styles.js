@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Vars } from "../../styles/Variables";
+import { Vars, ScreenMedia } from "../../styles/Variables";
 import { LoadedAnimation } from "../../styles/LoadedAnimation";
 
 export const Wrapper = styled(LoadedAnimation)`
@@ -9,6 +9,10 @@ export const Wrapper = styled(LoadedAnimation)`
   align-items: center;
   margin: auto;
   padding: 20px 0;
+
+  @media (max-width: ${ScreenMedia.lg}) {
+    font-size: 0.9rem;
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -22,4 +26,10 @@ export const StyledLink = styled(Link)`
   min-width: 150px;
   text-align: center;
   font-weight: bold;
+
+  @media (max-width: ${ScreenMedia.lg}) {
+    font-size: 0.8rem;
+    margin-left: 8px;
+    min-width: 100px;
+  }
 `;

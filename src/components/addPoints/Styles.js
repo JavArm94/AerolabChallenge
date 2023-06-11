@@ -1,5 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { DefaultBtn } from "../../styles/Button";
+import { ScreenMedia } from "../../styles/Variables";
+
 const rotation = keyframes`
 from{transform:rotate(0deg)}
 to{transform:rotate(360deg)}`;
@@ -17,6 +19,10 @@ export const BtnPoint = styled(DefaultBtn)`
     img {
       transform: translateY(-2px);
     }
+  }
+
+  @media (max-width: ${ScreenMedia.lg}) {
+    font-size: 0.9rem;
   }
 `;
 

@@ -1,17 +1,16 @@
-import React from "react";
-import { HistorySection } from "./Styles";
-import { useSelector } from "react-redux";
-import { formatDate } from "../../utils/dateformat";
-import { LoadedAnimation } from "../../styles/LoadedAnimation";
-import { LoadingScreen } from "../../styles/LoadingScreen";
-import { Spinner } from "../addPoints/Styles";
+import React from "react"
+import { HistorySection } from "./Styles"
+import { useSelector } from "react-redux"
+import { formatDate } from "../../utils/dateformat"
+import { LoadedAnimation } from "../../styles/LoadedAnimation"
+import { LoadingScreen } from "../../styles/LoadingScreen"
+import { Spinner } from "../addPoints/Styles"
 
 const History = ({ isLoading }) => {
-  const userInfo = useSelector((state) => state.user);
-  const historyArray = Array.prototype.concat.apply(
-    [],
-    userInfo.dataUser.redeemHistory
-  );
+  const userInfo = useSelector((state) => state.user)
+  const historyArray = Array.prototype.concat
+    .apply([], userInfo.dataUser.redeemHistory)
+    .sort((a, b) => new Date(b.createDate) - new Date(a.createDate))
 
   return (
     <>
@@ -19,7 +18,7 @@ const History = ({ isLoading }) => {
         {!isLoading &&
           historyArray.map((item) => {
             return (
-              <HistorySection>
+              <HistorySection key={item._id + item.createDate}>
                 <img src={item.img.url} alt="" />
                 <div>
                   <span>{item.category}</span>
@@ -38,7 +37,7 @@ const History = ({ isLoading }) => {
                   <p>{item.cost}</p>
                 </div>
               </HistorySection>
-            );
+            )
           })}
       </LoadedAnimation>
       <LoadingScreen isLoading={isLoading}>
@@ -48,7 +47,7 @@ const History = ({ isLoading }) => {
         </Spinner>
       </LoadingScreen>
     </>
-  );
-};
+  )
+}
 
-export default History;
+export default History
