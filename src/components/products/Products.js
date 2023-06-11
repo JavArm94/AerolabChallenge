@@ -1,18 +1,19 @@
-import React, { useEffect } from "react";
-import Card from "../card";
-import { Wrapper } from "./Styles";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react"
+import Card from "../card"
+import { Wrapper } from "./Styles"
+import { useDispatch, useSelector } from "react-redux"
 import {
   fetchProductsBegin,
   fetchProductsSuccess,
   fetchProductsError,
-} from "../../reducers/productReducer";
-import axios from "axios";
+} from "../../reducers/productReducer"
+import axios from "axios"
+import { Spinner } from "../addPoints/Styles"
 
 const Products = () => {
-  const dispatch = useDispatch();
-  const productsState = useSelector((state) => state.products);
-  const paginationState = useSelector((state) => state.pagination);
+  const dispatch = useDispatch()
+  const productsState = useSelector((state) => state.products)
+  const paginationState = useSelector((state) => state.pagination)
 
   useEffect(() => {
     const fetchProductsData = async () => {
@@ -20,7 +21,7 @@ const Products = () => {
         productsState.loadingProducts ||
         !productsState.sortedProducts.length > 0
       ) {
-        dispatch(fetchProductsBegin());
+        dispatch(fetchProductsBegin())
         try {
           const response = await axios.get(
             `${process.env.REACT_APP_ENDPOINT}products`,
@@ -31,32 +32,37 @@ const Products = () => {
                 Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
               },
             }
-          );
-          dispatch(fetchProductsSuccess(response.data));
+          )
+          dispatch(fetchProductsSuccess(response.data))
         } catch {
-          dispatch(fetchProductsError());
+          dispatch(fetchProductsError())
         }
       }
-    };
-    fetchProductsData();
-  }, [dispatch, productsState]);
+    }
+    fetchProductsData()
+  }, [dispatch, productsState])
 
   if (
     productsState.loadingProducts ||
     !productsState.sortedProducts.length > 0
   ) {
-    return <div>Loading...</div>;
+    return (
+      <Spinner>
+        <div></div>
+        <h1>Loading products...</h1>
+      </Spinner>
+    )
   }
 
   return (
     <Wrapper>
       {productsState.sortedProducts[paginationState.actualPage - 1].items.map(
         (item) => {
-          return <Card key={item._id} {...item}></Card>;
+          return <Card key={item._id} {...item}></Card>
         }
       )}
     </Wrapper>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products

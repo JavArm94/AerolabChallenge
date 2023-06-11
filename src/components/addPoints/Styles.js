@@ -1,10 +1,10 @@
-import styled, { keyframes } from "styled-components";
-import { DefaultBtn } from "../../styles/Button";
-import { ScreenMedia } from "../../styles/Variables";
+import styled, { keyframes } from "styled-components"
+import { DefaultBtn } from "../../styles/Button"
+import { ScreenMedia } from "../../styles/Variables"
 
 const rotation = keyframes`
 from{transform:rotate(0deg)}
-to{transform:rotate(360deg)}`;
+to{transform:rotate(360deg)}`
 
 export const BtnPoint = styled(DefaultBtn)`
   width: 100px;
@@ -24,9 +24,13 @@ export const BtnPoint = styled(DefaultBtn)`
   @media (max-width: ${ScreenMedia.lg}) {
     font-size: 0.9rem;
   }
-`;
+`
 
 export const Spinner = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
   div {
     display: flex;
     align-items: center;
@@ -45,11 +49,11 @@ export const Spinner = styled.div`
     font-size: 1rem;
     text-align: center;
   }
-`;
+`
 
 export const SpinnerBtn = styled(Spinner)`
   div {
     height: 15px;
     width: 15px;
   }
-`;
+`
