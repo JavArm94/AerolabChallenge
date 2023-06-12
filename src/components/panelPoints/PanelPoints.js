@@ -1,17 +1,17 @@
-import React from "react";
-import { Panel } from "./Styles";
-import AddPoints from "../addPoints";
+import React from "react"
+import { Panel } from "./Styles"
+import AddPoints from "../addPoints"
 
-const PanelPoints = () => {
-  const pointsValues = [1000, 5000, 7500];
+const PanelPoints = ({ isMobile }) => {
+  const pointsValues = [1000, 5000, 7500]
 
   return (
-    <Panel>
+    <Panel mobile={isMobile}>
       {pointsValues.map((amount) => {
-        return <AddPoints key={amount} amount={amount}></AddPoints>;
+        return <AddPoints key={amount} amount={amount}></AddPoints>
       })}
     </Panel>
-  );
-};
+  )
+}
 
-export default PanelPoints;
+export default PanelPoints

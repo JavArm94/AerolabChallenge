@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { Vars } from "../../styles/Variables";
+import styled from "styled-components"
+import { Vars } from "../../styles/Variables"
+import { ScreenMedia } from "../../styles/Variables"
 
 export const UserStyle = styled.div`
   display: flex;
@@ -11,6 +12,7 @@ export const UserStyle = styled.div`
   gap: 10px;
   padding-right: 10px;
   border-radius: 30px;
+
   span {
     display: flex;
     align-items: center;
@@ -23,4 +25,7 @@ export const UserStyle = styled.div`
   img {
     margin-top: 4px;
   }
-`;
+
+  @media (max-width: ${ScreenMedia.md}) {
+  }
+`

@@ -1,10 +1,11 @@
-import React from "react";
-import Carousel from "../../components/carousel";
-import PageControls from "../../components/pageControls/PageControls";
-import Products from "../../components/products";
-import { Spinner } from "../../components/addPoints/Styles";
-import { LoadingScreen } from "../../styles/LoadingScreen";
-import { LoadedAnimation } from "../../styles/LoadedAnimation";
+import React from "react"
+import Carousel from "../../components/carousel"
+import PageControls from "../../components/pageControls/PageControls"
+import Products from "../../components/products"
+import { Spinner } from "../../components/addPoints/Styles"
+import { LoadingScreen } from "../../styles/LoadingScreen"
+import { LoadedAnimation } from "../../styles/LoadedAnimation"
+import PanelPoints from "../../components/panelPoints"
 const ProductSection = ({ isLoading }) => {
   return (
     <>
@@ -12,7 +13,8 @@ const ProductSection = ({ isLoading }) => {
         <Carousel></Carousel>
         <PageControls filterOn={true}></PageControls>
         <Products></Products>
-        <PageControls filterOn={false}></PageControls>
+        <PageControls filterOn={false}></PageControls>{" "}
+        <PanelPoints isMobile={true}></PanelPoints>
       </LoadedAnimation>
       <LoadingScreen isLoading={isLoading}>
         <Spinner>
@@ -21,7 +23,7 @@ const ProductSection = ({ isLoading }) => {
         </Spinner>
       </LoadingScreen>
     </>
-  );
-};
+  )
+}
 
-export default ProductSection;
+export default ProductSection

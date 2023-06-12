@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from "styled-components"
+import { ScreenMedia } from "../../styles/Variables"
 
 export const Wrapper = styled.div`
   display: flex;
@@ -12,7 +13,11 @@ export const Wrapper = styled.div`
     margin-right: ${(p) => !p.filterOn && "auto"};
     width: 50px;
   }
-`;
+
+  @media (max-width: ${ScreenMedia.sm}) {
+    padding-bottom: 50px;
+  }
+`
 
 export const PaginationBtn = styled.button`
   display: ${(p) => (p.show ? "initial" : "none")};
@@ -23,4 +28,4 @@ export const PaginationBtn = styled.button`
   color: inherit;
   cursor: pointer;
   background: transparent;
-`;
+`

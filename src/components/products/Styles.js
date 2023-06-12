@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { ScreenMedia } from "../../styles/Variables";
+import styled from "styled-components"
+import { ScreenMedia } from "../../styles/Variables"
 
 export const Wrapper = styled.div`
   display: grid;
@@ -18,5 +18,6 @@ export const Wrapper = styled.div`
   }
 
   @media (max-width: ${ScreenMedia.xs}) {
+    grid-template-columns: 1fr;
   }
-`;
+`
