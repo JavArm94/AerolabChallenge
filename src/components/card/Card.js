@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { ProductDescription, ProductHover, Wrapper, RedeemBtn } from "./Styles";
+import {
+  ProductDescription,
+  ProductHover,
+  Wrapper,
+  RedeemBtn,
+  ProductHoverAlt,
+} from "./Styles";
 import coin from "../../assets/icons/coin.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,6 +19,7 @@ import { Spinner } from "../addPoints/Styles";
 const Card = ({ cost, img, name, category, _id: id }) => {
   const dispatch = useDispatch();
   const redeemState = useSelector((state) => state.redeem);
+  const userState = useSelector((state) => state.user);
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const redeemProduct = async (id) => {
@@ -50,15 +57,25 @@ const Card = ({ cost, img, name, category, _id: id }) => {
 
   return (
     <Wrapper>
-      <ProductHover>
-        <span>{cost}</span>
-        <img src={coin} alt="" />
-        <RedeemBtn
-          onClick={redeemState.loadingRedeem ? null : () => redeemProduct(id)}
-        >
-          Redeem now
-        </RedeemBtn>
-      </ProductHover>
+      {userState.dataUser.points >= cost ? (
+        <ProductHover>
+          <span>{cost}</span>
+          <img src={coin} alt="" />
+          <RedeemBtn
+            onClick={redeemState.loadingRedeem ? null : () => redeemProduct(id)}
+          >
+            Redeem now
+          </RedeemBtn>
+        </ProductHover>
+      ) : (
+        <ProductHoverAlt>
+          <p>
+            You need {cost - userState.dataUser.points} points more to redeem
+            this product.
+          </p>
+        </ProductHoverAlt>
+      )}
+
       <ProductDescription imgLoad={imageLoaded}>
         <img src={imgUrl} alt="img" onLoad={() => setImageLoaded(true)} />
         {!imageLoaded && (

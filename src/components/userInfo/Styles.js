@@ -1,6 +1,6 @@
-import styled from "styled-components"
-import { Vars } from "../../styles/Variables"
-import { ScreenMedia } from "../../styles/Variables"
+import styled from "styled-components";
+import { Vars } from "../../styles/Variables";
+import { ScreenMedia } from "../../styles/Variables";
 
 export const UserStyle = styled.div`
   display: flex;
@@ -28,4 +28,4 @@ export const UserStyle = styled.div`
 
   @media (max-width: ${ScreenMedia.md}) {
   }
-`
+`;

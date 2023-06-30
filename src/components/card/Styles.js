@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   align-items: center;
   height: 300px;
   width: 100%;
-  background-color: #ffffff;
+  background-color: ${Vars.backgroundCard};
   border-radius: 20px;
   overflow: hidden;
   transition: transform 0.3s ease;
@@ -31,13 +31,13 @@ export const ProductDescription = styled.div`
 
   hr {
     width: 100%;
-    color: ${Vars.btnColor};
+    color: ${Vars.fontLightGray};
   }
 
   h1 {
     font-size: 1rem;
     font-weight: normal;
-    color: ${Vars.btnColor};
+    color: ${Vars.fontLightGray};
   }
 
   h1,
@@ -47,7 +47,7 @@ export const ProductDescription = styled.div`
   }
 
   p {
-    color: #616161;
+    color: ${Vars.fontDarkGray};
   }
 `;
 
@@ -84,6 +84,24 @@ export const ProductHover = styled.div`
 
   span {
     margin-left: auto;
+  }
+`;
+
+export const ProductHoverAlt = styled(ProductHover)`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: ${Vars.btnBgActiveAlt + "CC"};
+  font-weight: bold;
+  user-select: none;
+
+  :hover {
+    opacity: 1;
+  }
+
+  p {
+    padding: 0px 20px;
   }
 `;
 

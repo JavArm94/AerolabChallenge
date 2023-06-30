@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react"
-import { FilterBtn, Wrapper } from "./Styles"
-import { textBtn } from "../../styles/Variables"
-import { useDispatch } from "react-redux"
-import { filterProducts } from "../../reducers/productReducer"
+import React, { useEffect, useState } from "react";
+import { FilterBtn, Wrapper } from "./Styles";
+import { textBtnFilter } from "../../styles/Variables";
+import { useDispatch } from "react-redux";
+import { filterProducts } from "../../reducers/productReducer";
 
 const Filter = () => {
-  const [filter, setFilter] = useState("Most recent")
-  const dispatch = useDispatch()
+  const [filter, setFilter] = useState("Most recent");
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(filterProducts(filter))
-  }, [dispatch, filter])
+    dispatch(filterProducts(filter));
+  }, [dispatch, filter]);
 
   return (
     <Wrapper>
-      {textBtn.map((text) => {
+      {textBtnFilter.map((text) => {
         return (
           <FilterBtn
             key={text}
@@ -23,10 +23,10 @@ const Filter = () => {
           >
             {text}
           </FilterBtn>
-        )
+        );
       })}
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Filter
+export default Filter;

@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { ScreenMedia } from "../../styles/Variables"
+import styled from "styled-components";
+import { ScreenMedia, Vars } from "../../styles/Variables";
 
 export const Panel = styled.div`
   display: ${(p) => (p.mobile ? "none" : "flex")};
@@ -16,6 +16,6 @@ export const Panel = styled.div`
     left: 0;
     width: 100%;
     padding: 10px;
-    background-color: #0ad4fa;
+    background-color: ${Vars.btnBgActive};
   }
-`
+`;

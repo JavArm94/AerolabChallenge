@@ -8,11 +8,11 @@ export const HistorySection = styled.div`
   align-items: center;
   justify-items: center;
   grid-template-columns: repeat(5, 1fr);
-  background-color: #ffffff;
+  background-color: ${Vars.backgroundCard};
   margin: 10px 0px;
   border-radius: 20px;
   column-gap: 30px;
-  color: #616161;
+  color: ${Vars.fontDarkGray};
 
   img {
     max-height: 60px;
@@ -22,6 +22,6 @@ export const HistorySection = styled.div`
     margin: 0;
   }
   span {
-    color: ${Vars.btnColor};
+    color: ${Vars.fontLightGray};
   }
 `;
