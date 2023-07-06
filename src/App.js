@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import History from "./components/history";
-import PanelPoints from "./components/panelPoints";
 
 const GlobalStyle = createGlobalStyle`
 body{
@@ -27,7 +26,6 @@ function App() {
     if (userState.dataUser.points) {
       setIsLoading(false);
     }
-    console.log(isLoading);
   }, [productsState, userState]);
 
   return (
@@ -52,18 +50,10 @@ function App() {
   );
 }
 
-/**   <Route
-          path="/"
-          element={
-            <>
-              <ContentContainer></ContentContainer>
-            </>
-          }
-        ></Route> */
-
 export default App;
 
-/*
+/************
+CHALLENGE:
 The user should be able to sort products by price, from highest to lowest, and vice-versa.
 The user should be able to see how many points they have in their account.
 There should be a clear way for the user to distinguish those products that they can redeem from those they cannot.
@@ -72,4 +62,4 @@ A “Redeem now” option should appear when the user interacts with a product t
 When the user doesn’t have enough points for a product, they should be able to see how many more points they need to claim it.
 The user should not be able to redeem a product for which they don’t have enough points.
 When the user clicks on the Redeem now button, the system should automatically deduct the item’s price from the users’ points.
-*/
+************/
