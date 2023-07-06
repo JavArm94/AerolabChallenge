@@ -1,35 +1,34 @@
-import "./App.css"
-import Navbar from "./containers/navbar/Navbar"
-import { createGlobalStyle } from "styled-components"
-import { Vars } from "./styles/Variables"
-import ProductSection from "./containers/productSection"
-import { useState, useEffect } from "react"
-import { useSelector } from "react-redux"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import History from "./components/history"
-import PanelPoints from "./components/panelPoints"
+import "./App.css";
+import Navbar from "./containers/navbar/Navbar";
+import { createGlobalStyle } from "styled-components";
+import { Vars } from "./styles/Variables";
+import ProductSection from "./containers/productSection";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import History from "./components/history";
+import PanelPoints from "./components/panelPoints";
 
 const GlobalStyle = createGlobalStyle`
 body{
   min-height: 100vh;  
-  width: 90%;
   max-width: 1200px;
   margin: auto;
   padding: 20px;background-color:${Vars.backgroundColor}
 }
-`
+`;
 
 function App() {
-  const userState = useSelector((state) => state.user)
-  const productsState = useSelector((state) => state.products)
-  const [isLoading, setIsLoading] = useState(true)
+  const userState = useSelector((state) => state.user);
+  const productsState = useSelector((state) => state.products);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (userState.dataUser.points) {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-    console.log(isLoading)
-  }, [productsState, userState])
+    console.log(isLoading);
+  }, [productsState, userState]);
 
   return (
     <Router>
@@ -50,7 +49,7 @@ function App() {
         ></Route>
       </Routes>
     </Router>
-  )
+  );
 }
 
 /**   <Route
@@ -62,7 +61,7 @@ function App() {
           }
         ></Route> */
 
-export default App
+export default App;
 
 /*
 The user should be able to sort products by price, from highest to lowest, and vice-versa.
